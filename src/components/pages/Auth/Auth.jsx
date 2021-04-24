@@ -1,10 +1,14 @@
 import React from "react";
+import AuthForm from "../../AuthForm";
+import styles from "./auth.module.scss";
 
 const Auth = () => {
   return (
-    <>
-      <h1>Auth</h1>
-    </>
+    <div className="container">
+      <div className={styles.formWrapper}>
+        <AuthForm />
+      </div>
+    </div>
   );
 };
 

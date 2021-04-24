@@ -4,6 +4,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 import { authSelectors } from "./redux/auth/index";
 import routes from "./routes";
+import Header from "./components/Header";
 
 function App() {
   const routesMap = routes.map((route) => {
@@ -16,8 +17,7 @@ function App() {
 
   return (
     <>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/auth">Auth</NavLink>
+      <Header />
       <Suspense fallback="Loading">
         <Switch>{routesMap}</Switch>
       </Suspense>

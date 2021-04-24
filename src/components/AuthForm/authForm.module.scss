@@ -1,0 +1,89 @@
+.authForm {
+  width: 300px;
+  background: linear-gradient(to right bottom, black 50%, grey);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  font-family: sans-serif;
+  color: white;
+
+  padding: 20px 0;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-bottom: 15px;
+
+  & > label {
+    margin-bottom: 5px;
+  }
+
+  & > input {
+    width: 170px;
+    height: 30px;
+    border-radius: 30px;
+    text-align: center;
+    border: none;
+    outline: none;
+
+    background-color: black;
+    transition: all 250ms linear;
+
+    &:hover,
+    &:focus {
+      transform: scale(1.2);
+      background-color: white;
+    }
+
+    &::placeholder {
+      text-align: center;
+    }
+  }
+}
+
+.errorMessage {
+    color: red;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+
+  & > .authButton {
+    width: 140px;
+    height: 30px;
+    border-radius: 30px;
+    margin-bottom: 10px;
+    text-align: center;
+    border: none;
+    outline: none;
+
+    cursor: pointer;
+
+    color: white;
+    background-color: black;
+    transition: all 250ms linear;
+
+    &:last-child {
+      background-color: white;
+      color: black;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    &:hover,
+    &:focus {
+      color: black;
+      background-color: white;
+    }
+  }
+}
