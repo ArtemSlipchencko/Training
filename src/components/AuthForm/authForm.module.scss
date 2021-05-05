@@ -12,6 +12,11 @@
   padding: 20px 0;
   border-radius: 20px;
   margin: 0 auto;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, 50%);
 }
 
 .inputWrapper {
@@ -34,12 +39,14 @@
     outline: none;
 
     background-color: black;
+    color: white;
     transition: all 250ms linear;
 
     &:hover,
     &:focus {
       transform: scale(1.2);
       background-color: white;
+      color: black;
     }
 
     &::placeholder {

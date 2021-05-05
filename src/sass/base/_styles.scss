@@ -12,3 +12,15 @@ body {
   margin: 0;
   line-height: 1.5;
 }
+
+.back {
+  position: fixed;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../../images/background.jpg);
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}

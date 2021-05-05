@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { Switch, NavLink } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 import { authSelectors } from "./redux/auth/index";
@@ -17,6 +17,7 @@ function App() {
 
   return (
     <>
+      <div className="back"></div>
       <Header />
       <Suspense fallback="Loading">
         <Switch>{routesMap}</Switch>

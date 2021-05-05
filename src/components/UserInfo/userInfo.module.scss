@@ -1,3 +1,29 @@
 .userContainer {
-    display: flex;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: white;
+
+  & > span {
+    font-size: 16px;
+    margin-right: 10px;
+  }
+
+  & > .logoutButton {
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+    height: 100%;
+    font-size: 16px;
+
+    background-color: transparent;
+    color: white;
+    transition: all 250ms linear;
+  }
+
+  & > .logoutButton:hover {
+    background-color: red;
+    color: white;
+  }
 }

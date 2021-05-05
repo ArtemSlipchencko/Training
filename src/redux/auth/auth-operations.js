@@ -1,7 +1,7 @@
 import axios from "axios";
 import authActions from "./auth-actions";
 
-axios.defaults.baseURL = "https://localhost:8080";
+axios.defaults.baseURL = "http://localhost:8080";
 
 const axiosToken = {
   set(token) {
@@ -12,17 +12,20 @@ const axiosToken = {
   },
 };
 
-const register = function (credentials) {
-  authActions.registerRequest();
+const register = (credentials, history) => async (dispatch) => {
+  dispatch(authActions.registerRequest());
 
-  axios
+  await axios
     .post("/fandom/users", credentials)
-    .then((res) => authActions.registerSuccess(res.data))
-    .catch((error) => authActions.registerError(error));
+    .then((res) => {
+      dispatch(authActions.registerSuccess(res.data));
+      history.push("/");
+    })
+    .catch((error) => dispatch(authActions.registerError(error)));
 };
 
-const login = async function (credentials) {
-  authActions.loginRequest();
+const login = (credentials, history) => async (dispatch) => {
+  dispatch(authActions.loginRequest());
 
   try {
     const res = await axios.patch("/fandom/users", credentials);
@@ -30,21 +33,40 @@ const login = async function (credentials) {
     const { name, subscription } = user;
     axiosToken.set(token);
 
-    authActions.loginSuccess({ name, subscription });
+    dispatch(authActions.loginSuccess({ token, name, subscription }));
+    history.push("/");
   } catch (error) {
-    authActions.loginError(error);
+    dispatch(authActions.loginError(error));
   }
 };
 
-const logout = function () {
-  authActions.logOutRequest();
+const logout = () => async (dispatch) => {
+  dispatch(authActions.logOutRequest());
 
   try {
-    axios.post("/auth/logout");
+    await axios.patch("/fandom/logout");
+
+    dispatch(authActions.logOutSuccess());
     axiosToken.unset();
-    authActions.logOutSuccess();
   } catch (error) {
-    authActions.logOutError(error.message);
+    dispatch(authActions.logOutError(error.message));
+  }
+};
+
+const current = () => async (dispatch, getState) => {
+  const {
+    auth: { token: persistedToken },
+  } = getState();
+  console.log(persistedToken);
+  axiosToken.set(persistedToken);
+  dispatch(authActions.getCurrentUserRequest());
+
+  try {
+    const res = await axios.get("/fandom/user");
+    const { name, subscription } = res.data;
+    dispatch(authActions.getCurrentUserSuccess({ name, subscription }));
+  } catch (error) {
+    dispatch(authActions.getCurrentUserError(error));
   }
 };
 
@@ -52,6 +74,7 @@ const authOperations = {
   register,
   logout,
   login,
+  current,
 };
 
 export default authOperations;

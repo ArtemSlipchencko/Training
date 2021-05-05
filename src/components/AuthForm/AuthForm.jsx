@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import styles from "./authForm.module.scss";
+import selectors from "../../redux/auth/auth-selectors";
 import authOperations from "../../redux/auth/auth-operations";
 
 const Schema = Yup.object().shape({
@@ -28,8 +30,12 @@ class AuthForm extends Component {
     const { formType } = this.state;
 
     if (formType === "register") {
-      authOperations.register(values);
-    } else authOperations.login(values);
+      this.props.register(values, this.props.history);
+      // this.props.history.push("/");
+    } else {
+      this.props.login(values, this.props.history);
+      // this.props.history.push("/");
+    }
   };
 
   render() {
@@ -97,4 +103,9 @@ class AuthForm extends Component {
   }
 }
 
-export default AuthForm;
+const mapDispatchToProps = {
+  register: authOperations.register,
+  login: authOperations.login,
+};
+
+export default connect(null, mapDispatchToProps)(AuthForm);
