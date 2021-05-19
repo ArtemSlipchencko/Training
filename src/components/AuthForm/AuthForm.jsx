@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import styles from "./authForm.module.scss";
-import selectors from "../../redux/auth/auth-selectors";
 import authOperations from "../../redux/auth/auth-operations";
 
 const Schema = Yup.object().shape({

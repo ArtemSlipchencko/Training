@@ -2,7 +2,6 @@ import { Suspense } from "react";
 import { Switch } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
-import { authSelectors } from "./redux/auth/index";
 import routes from "./routes";
 import Header from "./components/Header";
 

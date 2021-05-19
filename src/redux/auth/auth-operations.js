@@ -12,19 +12,18 @@ const axiosToken = {
   },
 };
 
-const register = (credentials, history) => async (dispatch) => {
+const register = (credentials) => async (dispatch) => {
   dispatch(authActions.registerRequest());
 
   await axios
     .post("/fandom/users", credentials)
     .then((res) => {
       dispatch(authActions.registerSuccess(res.data));
-      history.push("/");
     })
     .catch((error) => dispatch(authActions.registerError(error)));
 };
 
-const login = (credentials, history) => async (dispatch) => {
+const login = (credentials) => async (dispatch) => {
   dispatch(authActions.loginRequest());
 
   try {
@@ -32,9 +31,8 @@ const login = (credentials, history) => async (dispatch) => {
     const { token, user } = res.data;
     const { name, subscription } = user;
     axiosToken.set(token);
-
     dispatch(authActions.loginSuccess({ token, name, subscription }));
-    history.push("/");
+    
   } catch (error) {
     dispatch(authActions.loginError(error));
   }
@@ -57,7 +55,6 @@ const current = () => async (dispatch, getState) => {
   const {
     auth: { token: persistedToken },
   } = getState();
-  console.log(persistedToken);
   axiosToken.set(persistedToken);
   dispatch(authActions.getCurrentUserRequest());
 

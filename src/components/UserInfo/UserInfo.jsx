@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import styles from "./userInfo.module.scss";
 import selectors from "../../redux/auth/auth-selectors";
