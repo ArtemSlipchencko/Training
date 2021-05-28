@@ -1,0 +1,17 @@
+.header-enter {
+  transform: translateY(-40px);
+}
+
+.header-enter-active {
+  transform: translateY(0px);
+  transition: all 250ms linear;
+}
+
+.header-exit {
+  transform: translateY(0px);
+}
+
+.header-exit-active {
+  transform: translateY(-40px);
+  transition: all 250ms linear;
+}

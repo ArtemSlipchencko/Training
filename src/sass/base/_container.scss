@@ -1,6 +1,9 @@
 @import "./mixin";
 
 .container {
+  background-color: #b3afaa;
+  padding-top: 40px;
+  height: 100%;
   margin: 0 auto;
   width: 320px;
   @include for-size(tablet) {
@@ -9,7 +12,7 @@
     padding-right: 52px;
   }
   @include for-size(desktop) {
-    width: 1200px;
+    width: 800px;
     padding-left: 19px;
     padding-right: 19px;
   }

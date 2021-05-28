@@ -16,7 +16,6 @@ function App() {
 
   return (
     <>
-      <div className="back"></div>
       <Header />
       <Suspense fallback="Loading">
         <Switch>{routesMap}</Switch>

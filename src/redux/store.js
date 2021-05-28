@@ -16,6 +16,7 @@ import {
   persistReducer,
 } from "redux-persist";
 import { authReducer } from "./auth";
+import serviceReducer from "./service/service-reducer";
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -34,6 +35,7 @@ const authPersistConfig = {
 
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
+  service: serviceReducer,
 });
 
 const store = configureStore({

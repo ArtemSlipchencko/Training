@@ -1,3 +1,9 @@
+.headerContainer {
+  position: fixed;
+  height: 40px;
+  width: 100%;
+}
+
 .headerWrapper {
   font-family: sans-serif;
 
@@ -8,7 +14,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  background-color: rgba($color: #000000, $alpha: 80%);
+  background-color: #6b4512;
+
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 
   & > .navContainer {
     display: flex;

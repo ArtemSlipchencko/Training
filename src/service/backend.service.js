@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://kapusta-srv.herokuapp.com";
+axios.defaults.baseURL = "http://localhost:8080";
 
 class Backend {
   setToken(token) {
@@ -9,6 +9,10 @@ class Backend {
 
   unsetToken() {
     axios.defaults.headers.common.Authorization = ``;
+  }
+
+  async getPosts() {
+    return await axios.get("/article/posts");
   }
 }
 
