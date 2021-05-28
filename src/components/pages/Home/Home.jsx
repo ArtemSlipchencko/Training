@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import getPosts from "../../../redux/service/service-operations";
-import styles from "./home.module.scss";
 
 class Home extends Component {
   componentDidMount() {
