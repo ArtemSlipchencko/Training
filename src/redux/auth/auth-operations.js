@@ -1,7 +1,7 @@
 import axios from "axios";
 import authActions from "./auth-actions";
 
-axios.defaults.baseURL = "http://localhost:8080";
+axios.defaults.baseURL = "https://morning-castle-38301.herokuapp.com";
 
 const axiosToken = {
   set(token) {
